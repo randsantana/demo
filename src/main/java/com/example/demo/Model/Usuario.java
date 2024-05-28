@@ -1,14 +1,14 @@
 package com.example.demo.Model;
 
-import org.hibernate.annotations.ColumnDefault;
+
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,22 +23,20 @@ public class Usuario {
     @Column(name = "cpf", nullable = false, length = 14)
     private String cpf;
 
-    @ManyToOne
-    private NivelAcesso nivelAcesso;
-
-    @Column(name = "ativo", nullable = true)
-    @ColumnDefault("true")
-    private Boolean ativo;
-
     @Column(name = "email", nullable = false, length = 100)
     private String email;
 
     @Column(name = "senha", nullable = false, length = 260)
     private String senha;
 
+    @ManyToMany
+    private List<NivelAcesso> nivelAcesso;
+
+    @ManyToMany
+    private List<Acesso> Acesso;
 
     public Long getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(Long id) {
@@ -46,27 +44,15 @@ public class Usuario {
     }
 
     public String getCpf() {
-        return this.cpf;
+        return cpf;
     }
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    public Boolean isAtivo() {
-        return this.ativo;
-    }
-
-    public Boolean getAtivo() {
-        return this.ativo;
-    }
-
-    public void setAtivo(Boolean ativo) {
-        this.ativo = ativo;
-    }
-
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     public void setEmail(String email) {
@@ -74,19 +60,26 @@ public class Usuario {
     }
 
     public String getSenha() {
-        return this.senha;
+        return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
     }
 
-    public NivelAcesso getNivelAcesso() {
-        return this.nivelAcesso;
+    public List<NivelAcesso> getNivelAcesso() {
+        return nivelAcesso;
     }
 
-    public void setNivelAcesso(NivelAcesso nivelAcesso) {
+    public void setNivelAcesso(List<NivelAcesso> nivelAcesso) {
         this.nivelAcesso = nivelAcesso;
     }
 
+    public List<Acesso> getAcesso() {
+        return Acesso;
+    }
+
+    public void setAcesso(List<Acesso> acesso) {
+        Acesso = acesso;
+    }
 }

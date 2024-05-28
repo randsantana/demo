@@ -1,6 +1,5 @@
 package com.example.demo.Model;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,16 +8,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "nivel_acesso")
-public class NivelAcesso {
-     @Id
+@Table(name = "acesso")
+public class Acesso {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    
-    @Column(name = "tipo", nullable = false, length = 100)
-    private String tipo;
 
+    @Column(name = "ip", nullable = false, length = 20)
+    private String ip;
+
+    @Column(name = "data_e_hora", nullable = false, length = 10)
 
     public Long getId() {
         return this.id;
@@ -28,12 +28,11 @@ public class NivelAcesso {
         this.id = id;
     }
 
-    public String getTipo() {
-        return this.tipo;
+    public String getIp() {
+        return this.ip;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setIp(String ip) {
+        this.ip = ip;
     }
-
 }
