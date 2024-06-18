@@ -5,11 +5,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "pontos_interesse")
-public class Pontos_interesse {
+@Table(name = "pontosInteresse")
+public class PontosInteresse {
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -23,6 +25,10 @@ public class Pontos_interesse {
 
     @Column(name = "contato", nullable = true, length = 100)
     private String contato;
+
+    @ManyToOne
+    @JoinColumn(name = "endereco")
+    private Endereco endereco;
 
     public Long getId() {
         return id;
@@ -55,5 +61,12 @@ public class Pontos_interesse {
     public void setContato(String contato) {
         this.contato = contato;
     }
-    
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -26,7 +27,8 @@ public class Endereco {
     private String cep;
 
     @ManyToOne
-    private Pontos_interesse pontos_interesse_id;
+    @JoinColumn(name = "bairro_id")
+    private Bairro bairro;
 
     public Long getId() {
         return id;
@@ -60,11 +62,12 @@ public class Endereco {
         this.cep = cep;
     }
 
-    public Pontos_interesse getPontos_interesse_id() {
-        return this.pontos_interesse_id;
+    public Bairro getBairro() {
+        return bairro;
     }
 
-    public void setPontos_interesse_id(Pontos_interesse pontos_interesse_id) {
-        this.pontos_interesse_id = pontos_interesse_id;
+    public void setBairro(Bairro bairro) {
+        this.bairro = bairro;
     }
-}
+ }
+ 

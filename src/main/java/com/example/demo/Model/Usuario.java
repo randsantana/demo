@@ -32,9 +32,6 @@ public class Usuario {
     @ManyToMany
     private List<NivelAcesso> nivelAcesso;
 
-    @ManyToMany
-    private List<Acesso> Acesso;
-
     public Long getId() {
         return id;
     }
@@ -73,13 +70,5 @@ public class Usuario {
 
     public void setNivelAcesso(List<NivelAcesso> nivelAcesso) {
         this.nivelAcesso = nivelAcesso;
-    }
-
-    public List<Acesso> getAcesso() {
-        return Acesso;
-    }
-
-    public void setAcesso(List<Acesso> acesso) {
-        Acesso = acesso;
     }
 }

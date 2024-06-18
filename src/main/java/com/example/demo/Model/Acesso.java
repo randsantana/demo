@@ -1,10 +1,14 @@
 package com.example.demo.Model;
 
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,7 +23,12 @@ public class Acesso {
     private String ip;
 
     @Column(name = "data_e_hora", nullable = false, length = 10)
+    private Date data;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+    
     public Long getId() {
         return this.id;
     }
@@ -34,5 +43,13 @@ public class Acesso {
 
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
